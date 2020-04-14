@@ -1,0 +1,349 @@
+{
+	"info": {
+		"_postman_id": "bbc76a34-e5b5-49e2-8f84-b88f1bc993a7",
+		"name": "capstone-kaiz",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "casting assistant",
+			"item": [
+				{
+					"name": "/movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "589d675a-5f5f-4a2b-8326-b47a67923d47",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains movies array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.movies).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/movies"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "casting director",
+			"item": [
+				{
+					"name": "/movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/movies"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies/1",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/actors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/actors"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1c9e8906-f4bf-4a04-9b40-7168bafda2c9",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"John Green\",\n\t\"age\":32,\n\t\"gender\":\"male\"\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/actors"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors/1",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Keanu Reeves\",\n\t\"age\":\"55\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/actors/3"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors/1",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": {
+					"token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkpUV21RNmIyWGp4R3FGMnh0RlVNQyJ9.eyJpc3MiOiJodHRwczovL2NhcHN0b25lLWt6LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZTk1ZDNiYTRhZDdiYjBjMTA2MThiMjciLCJhdWQiOiJjYXBzdG9uZSIsImlhdCI6MTU4Njg3Nzg5MiwiZXhwIjoxNTg2ODc4MTkyLCJhenAiOiJtcjlBbUM5N05UeUMxMzc2VTVOYjBHc1VrckxRanNEVCIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOmFjdG9yIiwiZ2V0OmFjdG9yIiwiZ2V0Om1vdmllIiwicGF0Y2g6YWN0b3IiLCJwYXRjaDptb3ZpZSIsInBvc3Q6YWN0b3IiXX0.aGBFZh63fyAaBRTh0teMoC9Im4RGLDKye5g8z2Z2FsTjt_RZy3A_YYwnGoz7LGAUdWlUHaewow9KqAWh9FNI5utujbtwdNpifZghfg-zKBOmCBXtOkxigd6HS5QhrPcEoSf5Y4KNmP-pxF0iF8TetJYvqjiX89j5RwIkxoxVfuc_3Rk-Jk5MPFUUyA-tFGxDb_HglLIIOH4wWqOICXkiIFOxGBUhyDIu2a5U2NUce74Qq1ucopFVXwCcboCf2HUc-lgewkdfhD3xKgsF9GZBDcyvcsxzyuFuSQ0DpH8kz7H9OwV69M3aGCsUWs7Y4lGkeoYERkbqJJxfDpNyRNCqOA"
+				}
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "4a98709d-29a3-489a-b2de-63c4d1d29dcf",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "95a0d328-4e65-45fb-91fc-7945decdbae9",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "executive director",
+			"item": [
+				{
+					"name": "/movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e7afc85a-24ea-4d99-9346-76979f81b1e2",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"Matix\",\n\t\"releasedate\":\"March 31, 1999\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/movies"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies/1",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/movies/1",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/actors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/actors"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e1fd128c-5e7e-4993-bc38-ebd0548750b6",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{host}}/actors"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors/1",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/actors/1",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": {
+					"token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkpUV21RNmIyWGp4R3FGMnh0RlVNQyJ9.eyJpc3MiOiJodHRwczovL2NhcHN0b25lLWt6LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZTk1ZDNlZjI5YWIzYzBjMTA1NDA2ODIiLCJhdWQiOiJjYXBzdG9uZSIsImlhdCI6MTU4Njg3ODU3NCwiZXhwIjoxNTg2ODc4ODc0LCJhenAiOiJtcjlBbUM5N05UeUMxMzc2VTVOYjBHc1VrckxRanNEVCIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOmFjdG9yIiwiZGVsZXRlOm1vdmllIiwiZ2V0OmFjdG9yIiwiZ2V0Om1vdmllIiwicGF0Y2g6YWN0b3IiLCJwYXRjaDptb3ZpZSIsInBvc3Q6YWN0b3IiLCJwb3N0Om1vdmllIl19.jmjiTWCjEq_PXWeApYZCL6GBpZqf0ksDAwPrSUF0ecE1yOFIFJE8II2-OiaoRgiGuo4iiqrgvjtCW1wv2uxigvPrxqXhFxGCJz6l26PD_EId2K4de6ThZEhnx70W2M1SJibwL2vaEb4V2XUkRqM-R7qSYoezYCwP3hn3PlFSDmudqpdAw7DBSTFox3TCcGa8tC_dJ3tZNfVi7oqyMd9NrpvZB0LMG2ni2GOYlSpYAvq0Vqc2idw99zzJOjHsIhI1YYjvkG0eGYsVARyzK8eLPHZrBg_xLqhTXZgiVRdCtwPJj_6S22o1QpLdR-5LZ5MEtPpiTmKVmMZoSRWzJ9gNXg"
+				}
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "546e08f0-8dfc-4cd0-8017-83f7232d8c18",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "a0e07c2b-dd9b-43ba-96a4-f90e433730e4",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "f70dc91e-90dd-422a-b535-233823f75c3a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "12d8cae7-7220-4a2d-abaa-29d875ac4692",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "3cc015a9-2760-4f60-9f75-9f155eb42b07",
+			"key": "host",
+			"value": "http://0.0.0.0:8080",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
