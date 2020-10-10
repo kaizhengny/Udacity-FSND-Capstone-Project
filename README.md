@@ -1,4 +1,4 @@
-This is casting agency app with movies and actors data. The is hosted on Heroku with below domain:
+This is a casting agency app with movies and actors data. It is hosted on Heroku with below domain:
 
 Domain:  https://capstone-kaiz.herokuapp.com/
 
